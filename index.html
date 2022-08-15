@@ -131,12 +131,10 @@ function mySend(howDo){
 		}
 	
 	var xmlHttp=new XMLHttpRequest();
-	xmlHttp.onreadystatechange = function() {
-        	console.log(this.responseText);
-    	};
 	if(header){
 		xmlHttp.open('POST',mail,true);
 		xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		xmlHttp.setRequestHeader('Access-Control-Allow-Origin', '*');
 		xmlHttp.send("level="+level+"&sens="+sens);
 		header=false;
 		}
