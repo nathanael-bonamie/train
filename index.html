@@ -99,38 +99,41 @@ function mySend(howDo){
 		  case 'foward':
 			sens='1';
 			header=true;
-			mail='https://109.215.84.47/foward';
+			mail='http://109.215.84.47/foward';
 			break;
 		  case 'reverse':
 			sens='0';
 			header=true;
-			mail='https://109.215.84.47/reverse';
+			mail='http://109.215.84.47/reverse';
 			break;
 		  case 'stop':
 			header=true;
-			mail='https://109.215.84.47/stop';
+			mail='http://109.215.84.47/stop';
 			break;
 		  case 'level':
 			header=true;
-			mail='https://109.215.84.47/level';
+			mail='http://109.215.84.47/level';
 			break;
 		  case 'onTrack':
-			mail='https://109.215.84.47/onTrack';
+			mail='http://109.215.84.47/onTrack';
 			break;
 		  case 'offTrack':
-			mail='https://109.215.84.47/offTrack';
+			mail='http://109.215.84.47/offTrack';
 			break;
 		  case 'onLight':
-			mail='https://109.215.84.47/onLight';
+			mail='http://109.215.84.47/onLight';
 			break;
 		  case 'offLight':
-			mail='https://109.215.84.47/offLight';
+			mail='http://109.215.84.47/offLight';
 			break;
 		  default:
 			alert('recommence');
 		}
 	
 	var xmlHttp=new XMLHttpRequest();
+	xmlHttp.onreadystatechange = function() {
+        	console.log(this.responseText);
+    	};
 	if(header){
 		xmlHttp.open('POST',mail,true);
 		xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
