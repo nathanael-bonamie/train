@@ -10,7 +10,150 @@
 	<title>Raphael's Web Modelism Api</title>
 </head>
 <style>
+.wrapper {<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name = "modified by" content = "Nath BONAMIE">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel = "icon" href =  "https://img.icons8.com/metro/26/07C96D/tram.png" type = "image/x-icon">
+	<title>Raphael's Web Modelism Api</title>
+</head>
+<style>
 .wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+.one {
+  grid-column: 1;
+  grid-row: 1;
+}
+.two {
+  grid-column: 2;
+  grid-row: 1;
+}
+.three {
+  grid-column: 3;
+  grid-row: 1;
+}
+.four {
+  grid-column: 1;
+  grid-row: 2;
+}
+.five {
+  grid-column: 2;
+  grid-row: 2;
+}
+.six {
+  grid-column: 3;
+  grid-row: 2;
+}
+.sept {
+  grid-column: 1/4;
+  grid-row: 4;
+}
+.huit {
+  grid-column: 1;
+  grid-row: 3;
+}
+.neuf {
+  grid-column: 2;
+  grid-row: 3;
+}
+.dix {
+  grid-column: 3;
+  grid-row: 3;
+} 
+.video{
+  grid-column: 1/4;
+  grid-row: 5;
+}
+#vol{
+	margin-top:8%;
+}
+</style>
+<h2 class="w3-container w3-center w3-light-gray w3-topbar w3-bottombar w3-border-blue">Télécommande du train à toton</h2>
+<div class="wrapper w3-margin">
+  <div class="one w3-button w3-deep-orange"  onclick="mySend('offTrack')"><h1 class="w3-padding-large">Off Track</h1></div>
+  <div class="w3-center">
+  <div class="two">
+	<img src="https://rb.gy/w2kvua" style="width:100%;max-width:100px"></img></div>
+  </div><!-- https://previews.123rf.com/images/draganae/draganae1612/draganae161200460/71403847-
+  ic%C3%B4ne-du-vecteur-ferroviaire-ic%C3%B4ne-du-chemin-de-fer.jpg short rb.gy/w2kvua -->
+  <div class="three w3-button w3-aqua" onclick="mySend('onTrack')"><h1 class="w3-padding-large">On Track</h1></div>
+  <div class="four w3-button w3-light-gray" onclick="mySend('offLight')"><h1 class="w3-padding-large">Off Light</h1></div>
+  <div class="w3-center">
+  <div class="five">
+	<img src="https://publicdomainvectors.org/photos/Licht.png" style="width:100%;max-width:100px"></div>
+  </div>	
+  <div class="six w3-button w3-yellow" onclick="mySend('onLight')"><h1 class="w3-padding-large">On Light</h1></div>
+  <div id="foward" class="huit w3-button w3-lime" onclick="mySend('foward')"><h1 class="w3-padding-large">Foward</h1></div>
+  <div class="w3-center">
+  <div class="neuf">
+	<input style="width:80%" type="range" id="vol" name="vol" min="0" max="50" ></div>
+  </div>
+  <div id="reverse" class="dix w3-button w3-lime" onclick="mySend('reverse')"><h1 class="w3-padding-large">Reverse</h1></div>
+  <div id="stop" class="sept w3-button w3-teal" onclick="mySend('stop')"><h1 class="w3-padding-large">Stop</h1></div>
+  <div id="video">
+	<img src="http://109.215.84.47:4747/video"/></div>
+</div>
+<script>
+
+	var arg, level;
+	var sens = 1;
+	var r = document.getElementById('vol');
+	level=r.value;
+	r.addEventListener('change', function(){
+		level=r.value;
+		mySend('level');// à terminer
+	},false);
+	
+function mySend(howDo){
+	switch(howDo) {
+		  case 'foward':
+			sens='1';
+			arg="func=<t 3&level="+level+"&sens="+sens+">";
+			break;
+		  case 'reverse':
+			sens='0';
+			arg="func=<t 3&level="+level+"&sens="+sens+">";
+			break;
+		  case 'stop':
+			//level=0;
+			arg="func=<t 3&level="+0+"&sens="+sens+">";
+			break;
+		  case 'level':
+			arg="func=<t 3&level="+level+"&sens="+sens+">";
+			break;
+		  case 'onTrack':
+			arg='func=<1 main>';
+			break;
+		  case 'offTrack':
+			arg='func=<0>';
+			break;
+		  case 'onLight':
+			arg='func=<f 3 144>';
+			break;
+		  case 'offLight':
+			arg='func=<f 3 128>';
+			break;
+		  default:
+			alert('recommence');
+		}
+	
+	var xmlHttp=new XMLHttpRequest();
+		xmlHttp.open('POST','https://109.215.84.47/train_a_toton',true);
+		xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		xmlHttp.send(arg);		//"level="+level+"&sens="+sens
+		
+	}
+</script>
+</body>
+</html>
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
