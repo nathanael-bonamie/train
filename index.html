@@ -6,90 +6,92 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name = "modified by" content = "Nath BONAMIE">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel = "icon" href =  "https://img.icons8.com/metro/26/07C96D/tram.png" type = "image/x-icon">
+	<link rel = "icon" href = "https://img.icons8.com/metro/26/07C96D/tram.png" type = "image/x-icon">
 	<title>Raphael's Web Modelism Api</title>
 </head>
 <style>
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+  grid-template-columns: 16.67% 16.67% 16.67% 16.67% 16.67% 16.67%;
+  grid-template-rows: 25% 25% 25% 25%;
+  grid-gap:10px;
 }
-.one {
+.offtrack {
   grid-column: 1;
   grid-row: 1;
 }
-.two {
-  grid-column: 2;
-  grid-row: 1;
+.imgrail {
+	align-self: center;
+	grid-column: 2;
+	grid-row: 1;
 }
-.three {
+.ontrack {
+	grid-column: 3;
+	grid-row: 1;
+}
+.offlight {
+	grid-column: 1;
+	grid-row: 2;
+}
+.imglight {
+	align-self: center;
+	grid-column: 2;
+	grid-row: 2;
+}
+.onlight {
   grid-column: 3;
-  grid-row: 1;
-}
-.four {
-  grid-column: 1;
   grid-row: 2;
 }
-.five {
-  grid-column: 2;
-  grid-row: 2;
-}
-.six {
-  grid-column: 3;
-  grid-row: 2;
-}
-.sept {
+.stop {
   grid-column: 1/4;
   grid-row: 4;
 }
-.huit {
+.foward {
   grid-column: 1;
   grid-row: 3;
 }
-.neuf {
-  grid-column: 2;
-  grid-row: 3;
+.level {
+	align-self: center;
+	grid-column: 2;
+	grid-row: 3;
 }
-.dix {
+.reverse {
   grid-column: 3;
   grid-row: 3;
-} 
-.video{
-  grid-column: 1/4;
-  grid-row: 5;
 }
-#vol{
-	margin-top:8%;
+.droidcam{
+	grid-column: 4/7;
+	grid-row: 1/5;
 }
 </style>
+<div class="zoom">
 <h2 class="w3-container w3-center w3-light-gray w3-topbar w3-bottombar w3-border-blue">Télécommande du train à toton</h2>
 <div class="wrapper w3-margin">
-	  <div class="one w3-button w3-deep-orange"  onclick="mySend('offTrack')"><h1 class="w3-padding-large">Off Track</h1></div>
-	  <div class="w3-center">
-	  <div class="two">
-		<img src="https://rb.gy/w2kvua" style="width:100%;max-width:100px"></img></div>
-	  </div><!-- https://previews.123rf.com/images/draganae/draganae1612/draganae161200460/71403847-
+	<div class="offtrack w3-button w3-deep-orange"  onclick="mySend('offTrack')"><h1 class="w3-padding-large">Off Track</h1></div>
+	<!--<div class="w3-center">-->
+	<div class="w3-center imgrail">
+		<img src="https://nathanael-bonamie.github.io/train/icône_chemin_de_fer.png" style="width:100%;max-width:80px"></img></div>
+	<!--</div><!-- https://previews.123rf.com/images/draganae/draganae1612/draganae161200460/71403847-
 	  ic%C3%B4ne-du-vecteur-ferroviaire-ic%C3%B4ne-du-chemin-de-fer.jpg short rb.gy/w2kvua -->
-	  <div class="three w3-button w3-aqua" onclick="mySend('onTrack')"><h1 class="w3-padding-large">On Track</h1></div>
-	  <div class="four w3-button w3-light-gray" onclick="mySend('offLight')"><h1 class="w3-padding-large">Off Light</h1></div>
-	  <div class="w3-center">
-	  <div class="five">
-		<img src="https://nathanael-bonamie.github.io/train/Licht.png" style="width:100%;max-width:100px"></div>
-	  </div>	
-	  <div class="six w3-button w3-yellow" onclick="mySend('onLight')"><h1 class="w3-padding-large">On Light</h1></div>
-	  <div id="foward" class="huit w3-button w3-lime" onclick="mySend('foward')"><h1 class="w3-padding-large">Foward</h1></div>
-	  <div class="w3-center">
-	  <div class="neuf">
+	<div class="ontrack w3-button w3-aqua" onclick="mySend('onTrack')"><h1 class="w3-padding-large">On Track</h1></div>
+	<div class="offlight w3-button w3-light-gray" onclick="mySend('offLight')"><h1 class="w3-padding-large">Off Light</h1></div>
+	<!--<div class="w3-center">-->
+	<div class="w3-center imglight">
+		<img src="https://nathanael-bonamie.github.io/train/Licht.png" style="width:100%;max-width:80px"></div>
+	<!--</div>-->
+	<div class="onlight w3-button w3-yellow" onclick="mySend('onLight')"><h1 class="w3-padding-large">On Light</h1></div>
+	<div id="foward" class="foward w3-button w3-lime" onclick="mySend('foward')"><h1 class="w3-padding-large">Foward</h1></div>
+	<!--<div class="w3-center">-->
+	<div class="w3-center level">
 		<input style="width:80%" type="range" id="vol" name="vol" min="0" max="50" ></div>
-	  </div>
-	  <div id="reverse" class="dix w3-button w3-lime" onclick="mySend('reverse')"><h1 class="w3-padding-large">Reverse</h1></div>
-	  <div id="stop" class="sept w3-button w3-teal" onclick="mySend('stop')"><h1 class="w3-padding-large">Stop</h1></div>
+	<!--</div>-->
+	<div id="reverse" class="reverse w3-button w3-lime" onclick="mySend('reverse')"><h1 class="w3-padding-large">Reverse</h1></div>
+	<div id="stop" class="stop w3-button w3-teal " onclick="mySend('stop')"><h1 class="w3-padding-large">Stop</h1></div>
+	<!--<div id="video">-->
+		<img class="droidcam" src="http://109.215.84.47:4747/video"/>
+	<!--</div>-->
 </div>
-	<div id="video" class="w3-center w3-margin-bottom">
-		<img src="http://109.215.84.47:4747/video"/>
-	</div>
+</div>
 <script>
 
 	var arg, level;
@@ -135,7 +137,7 @@ function mySend(howDo){
 		}
 	
 	var xmlHttp=new XMLHttpRequest();
-		xmlHttp.open('POST','https://109.215.84.47/train_a_toton',false);
+		xmlHttp.open('POST','https://109.215.84.47/train_a_toton',true);
 		xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 		xmlHttp.send(arg);		//"level="+level+"&sens="+sens
 		
